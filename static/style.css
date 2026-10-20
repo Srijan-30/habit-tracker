@@ -121,3 +121,19 @@ li.completed span {
     background-color: #c6f6d5;
     color: #22543d;
 }
+
+
+.delete-btn {
+    background-color: transparent;
+    color: #e74c3c;
+    border: none;
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #fee2e2;
+}

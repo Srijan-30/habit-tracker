@@ -62,3 +62,34 @@ function handleKeyPress(event) {
         addHabit();
     }
 }
+
+
+function renderHabits(habits) {
+    const habitList = document.getElementById('habitList');
+    habitList.innerHTML = '';
+
+    habits.forEach(habit => {
+        const li = document.createElement('li');
+        li.className = habit.completed ? 'completed' : '';
+        
+        li.innerHTML = `
+            <span onclick="toggleHabit(${habit.id})" style="flex: 1; cursor: pointer;">${habit.title}</span>
+            <span class="badge ${habit.completed ? 'done' : ''}" onclick="toggleHabit(${habit.id})" style="cursor: pointer;">
+                ${habit.completed ? 'Done ✓' : 'Pending'}
+            </span>
+            <button class="delete-btn" onclick="deleteHabit(${habit.id}, event)">🗑️</button>
+        `;
+        
+        habitList.appendChild(li);
+    });
+}
+
+async function deleteHabit(id, event) {
+    event.stopPropagation(); // Prevent triggering the toggle when clicking delete
+    try {
+        await fetch(`/api/habits/${id}`, { method: 'DELETE' });
+        fetchHabits();
+    } catch (error) {
+        console.error('Error deleting habit:', error);
+    }
+}

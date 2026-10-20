@@ -56,3 +56,15 @@ def toggle_habit(habit_id):
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
+
+
+@app.route('/api/habits/<int:habit_id>', methods=['DELETE'])
+def delete_habit(habit_id):
+    habits = load_habits()
+    updated_habits = [h for h in habits if h["id"] != habit_id]
+    
+    if len(updated_habits) == len(habits):
+        return jsonify({"error": "Habit not found"}), 404
+        
+    save_habits(updated_habits)
+    return jsonify({"message": "Habit deleted successfully"})
