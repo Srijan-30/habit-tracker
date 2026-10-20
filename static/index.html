@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Habit & Goal Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Daily Habit Tracker</h1>
+            <p>Track your daily routine and consistency.</p>
+        </header>
+
+        <section class="add-habit-section">
+            <input type="text" id="habitInput" placeholder="Enter a new habit..." onkeypress="handleKeyPress(event)">
+            <button onclick="addHabit()">Add Habit</button>
+        </section>
+
+        <section class="habit-list-container">
+            <h2>Today's Routine</h2>
+            <ul id="habitList"></ul>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
